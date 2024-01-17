@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>create</h1>
-<form method="POST" action="{{ route('meubles.store') }}">
+<form method="POST" action="{{ route('meubles.store') }}" enctype="multipart/form-data">
     @csrf
     <div>
      <label for="">Name</label>
@@ -27,6 +27,10 @@
     <div>
      <label for="">Prix</label>
      <input type="text" name="price" placeholder="prix">
+    </div>
+    <div>
+     <label for="">Image</label>
+     <input type="file" name="image"   >
     </div>
     <div>
         <input type="submit" value="ajouter">

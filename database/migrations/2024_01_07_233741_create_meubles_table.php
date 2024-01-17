@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('color');
             $table->integer('qte');
             $table->decimal('price');
+            $table->string('image')->nullable();
+
             $table->timestamps();
         });
     }

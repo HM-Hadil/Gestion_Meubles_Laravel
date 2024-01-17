@@ -13,6 +13,7 @@ class Meuble extends Model
         'color',
         'qte',
         'price',
+        'image'
     ];
 
 }

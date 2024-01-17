@@ -12,6 +12,12 @@ class MeubleController extends Controller
         return view('meubles.index',['meubles' => $meubles]);
 
     }
+
+    public function showMeubles(){
+        $meubles = Meuble::all();
+        return view('index',['meublesData' => $meubles]);
+
+    }
     public function create(){
         return view('meubles.create');
 
@@ -22,8 +28,16 @@ class MeubleController extends Controller
             'name'=> 'required',
             'color'=> 'required',
             'qte'=> 'required|numeric',
-            'price'=> 'required'
+            'price'=> 'required',
+            'image'=>'image'
         ]);
+        if ($req->hasFile('image')) {
+            $image = $req->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/meubles/', $imageName);
+            $data['image'] = $imageName;
+        }
+
         $newMeubles = Meuble::create($data);
         return redirect(route('meubles.index'));
     }
