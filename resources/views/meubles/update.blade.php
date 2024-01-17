@@ -1,37 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>update</h1>
-<form method="POST" action="{{ route('meubles.edit',['meuble'=> $meuble]) }}">
-    @csrf
-    @method('put')
-    <div>
-     <label for="">Name</label>
-     <input type="text" name="name" placeholder="nom" value="{{$meuble->name}}">
+@extends('welcome')
+@section('content')
+
+<div class="container mt-5">
+        <h1>Update Meubles</h1>
+
+        <form method="POST" action="{{ route('meubles.edit',['meuble'=> $meuble]) }}">
+            @csrf
+            @method('put')
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nom" value="{{$meuble->name}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="color" class="form-label">Couleur</label>
+                <input type="text" class="form-control" id="color" name="color" placeholder="Couleur" value="{{$meuble->color}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="qte" class="form-label">Quantité</label>
+                <input type="text" class="form-control" id="qte" name="qte" placeholder="Quantité" value="{{$meuble->qte}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Prix</label>
+                <input type="text" class="form-control" id="price" name="price" placeholder="Prix" value="{{$meuble->price}}">
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
     </div>
 
-    <div>
-     <label for="">Couleur</label>
-     <input type="text" name="color" placeholder="couleur" value="{{$meuble->color}}">
-    </div>
 
-    <div>
-     <label for="">Quantité</label>
-     <input type="text" name="qte" placeholder="quantité" value="{{$meuble->qte}}">
-    </div>
-
-    <div>
-     <label for="">Prix</label>
-     <input type="text" name="price" placeholder="prix" value="{{$meuble->price}}">
-    </div>
-    <div>
-        <input type="submit" value="update">
-    </div>
-</form>
-</body>
-</html>
+@endsection
